@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NSS Blood Donation Campaign | 1st September</title>
+  <meta name="description" content="Join the NSS Blood Donation Campaign on 1st September at El Shaddhai Auditorium." />
+  <style>
+    :root {
+      --bg: #08131f;
+      --bg-2: #0f2335;
+      --card: rgba(9, 20, 33, 0.72);
+      --card-strong: rgba(10, 25, 41, 0.92);
+      --text: #f4f7fb;
+      --muted: #b8c7d8;
+      --accent: #ff5b5f;
+      --accent-2: #ffc857;
+      --line: rgba(255, 255, 255, 0.12);
+      --shadow: 0 28px 60px rgba(0, 0, 0, 0.38);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255, 91, 95, 0.18), transparent 30%),
+        radial-gradient(circle at top right, rgba(255, 200, 87, 0.15), transparent 26%),
+        linear-gradient(160deg, var(--bg), var(--bg-2));
+      min-height: 100vh;
+    }
+
+    .shell {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .shell::before,
+    .shell::after {
+      content: "";
+      position: fixed;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.18;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .shell::before {
+      background: var(--accent);
+      top: -120px;
+      left: -120px;
+    }
+
+    .shell::after {
+      background: var(--accent-2);
+      bottom: -120px;
+      right: -120px;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 40px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 8px 0 24px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.78rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.08em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, rgba(255, 91, 95, 0.95), rgba(255, 200, 87, 0.9));
+      color: #08131f;
+      font-size: 1.2rem;
+      box-shadow: 0 12px 30px rgba(255, 91, 95, 0.3);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: stretch;
+      margin-top: 10px;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(16, 32, 49, 0.92), rgba(8, 18, 28, 0.88));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .hero-main {
+      padding: 34px;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-main::after {
+      content: "";
+      position: absolute;
+      inset: auto -60px -60px auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: radial-gradient(circle, rgba(255, 91, 95, 0.16), transparent 68%);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      width: fit-content;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      color: var(--accent-2);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(255, 91, 95, 0.12);
+    }
+
+    h1 {
+      margin: 18px 0 14px;
+      font-size: clamp(2.8rem, 5.8vw, 5.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      max-width: 9ch;
+    }
+
+    .lede {
+      margin: 0;
+      font-size: clamp(1rem, 1.7vw, 1.18rem);
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 58ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #ff7779);
+      color: white;
+      box-shadow: 0 16px 28px rgba(255, 91, 95, 0.28);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.25rem;
+      margin-bottom: 6px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .side {
+      display: grid;
+      gap: 18px;
+    }
+
+    .info-card {
+      padding: 22px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+    }
+
+    .info-card h2,
+    .section h2 {
+      margin: 0 0 12px;
+      font-size: 1.35rem;
+      letter-spacing: -0.03em;
+    }
+
+    .info-card p,
+    .info-card li,
+    .section p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .details-list {
+      list-style: none;
+      padding: 0;
+      margin: 18px 0 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .details-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .details-list b {
+      color: var(--text);
+    }
+
+    .icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      flex: 0 0 32px;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 91, 95, 0.14);
+      color: var(--accent-2);
+      font-weight: 800;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .section {
+      padding: 22px;
+      border-radius: 24px;
+      background: var(--card);
+      border: 1px solid var(--line);
+    }
+
+    .section ul {
+      margin: 14px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .cta-bar {
+      margin-top: 20px;
+      padding: 22px 24px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(255, 91, 95, 0.16), rgba(255, 200, 87, 0.12));
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .cta-bar strong {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 4px;
+    }
+
+    .footer {
+      padding: 22px 0 0;
+      color: rgba(255, 255, 255, 0.64);
+      font-size: 0.92rem;
+      text-align: center;
+    }
+
+    .fade-in {
+      animation: fadeUp 700ms ease both;
+    }
+
+    .delay-1 {
+      animation-delay: 90ms;
+    }
+
+    .delay-2 {
+      animation-delay: 180ms;
+    }
+
+    .delay-3 {
+      animation-delay: 260ms;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 920px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .section-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-main {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 20px, 1120px);
+        padding-top: 18px;
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-main {
+        padding: 24px;
+      }
+
+      h1 {
+        font-size: clamp(2.3rem, 13vw, 4rem);
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <main class="container">
+      <header class="topbar fade-in">
+        <div class="brand">
+          <span class="brand-mark">N</span>
+          <span>NSS Blood Donation Campaign</span>
+        </div>
+        <div>El Shaddhai Auditorium • 1st September</div>
+      </header>
+
+      <section class="hero">
+        <article class="panel hero-main fade-in delay-1">
+          <div>
+            <div class="eyebrow">
+              <span class="eyebrow-dot"></span>
+              Give blood, give life
+            </div>
+            <h1>Donate. Inspire. Save lives.</h1>
+            <p class="lede">
+              Join the NSS Blood Donation Campaign on 1st September at El Shaddhai Auditorium and be part of a
+              meaningful community effort to support patients in need. Your single donation can help save more than one life.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#register">Register Now</a>
+              <a class="btn btn-secondary" href="#details">View Event Details</a>
+            </div>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>1 September</strong>
+              <span>Campaign date</span>
+            </div>
+            <div class="stat">
+              <strong>El Shaddhai</strong>
+              <span>Auditorium venue</span>
+            </div>
+            <div class="stat">
+              <strong>NSS</strong>
+              <span>Community-led initiative</span>
+            </div>
+          </div>
+        </article>
+
+        <aside class="side">
+          <div class="panel info-card fade-in delay-2" id="details">
+            <h2>Event Details</h2>
+            <p>
+              A simple, organized blood donation drive for students, volunteers, and local donors who want to contribute
+              to a lifesaving cause.
+            </p>
+            <ul class="details-list">
+              <li>
+                <span class="icon">D</span>
+                <div><b>Date:</b> 1st September</div>
+              </li>
+              <li>
+                <span class="icon">V</span>
+                <div><b>Venue:</b> El Shaddhai Auditorium</div>
+              </li>
+              <li>
+                <span class="icon">T</span>
+                <div><b>Type:</b> NSS Blood Donation Campaign</div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="panel info-card fade-in delay-3" id="register">
+            <h2>Who Can Join?</h2>
+            <p>
+              If you are eligible to donate blood, come prepared to take part. Volunteers are also welcome to support
+              registration and coordination on the day of the event.
+            </p>
+            <a class="btn btn-primary" href="mailto:info@example.com?subject=NSS%20Blood%20Donation%20Campaign%20Registration">Contact for Registration</a>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section-grid">
+        <div class="section fade-in delay-1">
+          <h2>Why Donate?</h2>
+          <ul>
+            <li>It helps accident victims, surgical patients, and emergency cases.</li>
+            <li>One donation can support multiple patients.</li>
+            <li>It is a direct act of service to the community.</li>
+          </ul>
+        </div>
+        <div class="section fade-in delay-2">
+          <h2>Before You Come</h2>
+          <ul>
+            <li>Eat a healthy meal and stay hydrated.</li>
+            <li>Carry a valid ID if required by organizers.</li>
+            <li>Get enough rest before donation day.</li>
+          </ul>
+        </div>
+        <div class="section fade-in delay-3">
+          <h2>Volunteering</h2>
+          <ul>
+            <li>Help guide donors and manage the registration desk.</li>
+            <li>Support the awareness and awareness-sharing activities.</li>
+            <li>Be part of the NSS team effort from start to finish.</li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="cta-bar fade-in delay-3">
+        <div>
+          <strong>Be present on 1st September at El Shaddhai Auditorium.</strong>
+          <span>Bring your friends, spread the message, and help make the campaign a success.</span>
+        </div>
+        <a class="btn btn-primary" href="mailto:info@example.com?subject=Blood%20Donation%20Campaign%20Enquiry">Get In Touch</a>
+      </div>
+
+      <footer class="footer">
+        Organized by NSS for a healthier, stronger community.
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
